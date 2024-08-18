@@ -51,10 +51,12 @@ async function main() {
     };
 
     let createCandle = function (target, i) {
+        const dateLocal = luxon.DateTime.fromMillis(cryptos[i].Timestamp);
+        const dateUTC = dateLocal.minus({
+            minutes: dateLocal.offset,
+        });
         Object.assign(target[i], {
-            x: luxon.DateTime.fromMillis(cryptos[i].Timestamp, {
-                zone: "utc"
-            }).toUTC().valueOf(),
+            x: dateUTC.valueOf(),
             o: cryptos[i].OpenPrice,
             h: cryptos[i].HighPrice,
             l: cryptos[i].LowPrice,
@@ -65,10 +67,10 @@ async function main() {
     for (let i = 0; i < candleData.length; i++) {
         createCandle(candleData, i)
     }
-
+    
     const candleChart = new Chart(ctx, config);
 
-    let resetChartZoom = function(){
+    let resetChartZoom = function () {
         candleChart.resetZoom();
     }
 

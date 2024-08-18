@@ -63,10 +63,12 @@ async function main() {
     };
 
     let createLine = function (target, i) {
+        const dateLocal = luxon.DateTime.fromMillis(cryptos[i].Timestamp);
+        const dateUTC = dateLocal.minus({
+            minutes: dateLocal.offset,
+        });
         Object.assign(target[i], {
-            x: luxon.DateTime.fromMillis(cryptos[i].Timestamp, {
-                zone: "UTC"
-            }).valueOf(),
+            x: dateUTC.valueOf(),
             y: cryptos[i].PercentChange,
         });
     }
