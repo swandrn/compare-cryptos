@@ -13,17 +13,6 @@
     <div class="wrapper">
         <canvas id="myChart"></canvas>
     </div>
-    <?php if($cryptos): ?>
-    <div>
-        Compared Crypto:
-        <select id="compared-crypto">
-            <option value="X:ETHUSD" selected>X:ETHUSD</option>
-            <?php foreach($cryptos as $crypto): ?>
-            <option value="<?= htmlspecialchars($crypto["Symbol"])?>" selected><?= htmlspecialchars($crypto["Symbol"])?></option>
-            <?php endforeach; ?>
-        </select>
-    </div>
-    <?php endif; ?>
     <script src="https://cdn.jsdelivr.net/npm/luxon@^2"></script>
     <script src="./local_cdn/hammer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
