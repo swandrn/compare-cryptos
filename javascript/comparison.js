@@ -94,7 +94,6 @@ async function main() {
     }
 
     const lineChart = new Chart(ctx, config);
-    lineChart.zoom({x: 3})
 
     document.getElementById('compared-crypto').addEventListener('change', function(){
         changeComparedCrypto(lineData, document.getElementById('compared-crypto').value)
