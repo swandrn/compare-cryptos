@@ -1,4 +1,4 @@
-<?php include_once  "./handlers/get_list_of_cryptos.php"?>
+<?php include_once  "./handlers/get_list_of_cryptos.php" ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,16 +13,19 @@
     <div class="wrapper">
         <canvas id="myChart"></canvas>
     </div>
-    <?php if($cryptos): ?>
-    <div>
-        Compared Crypto:
-        <select id="compared-crypto">
-            <option value="X:ETHUSD" selected>X:ETHUSD</option>
-            <?php foreach($cryptos as $crypto): ?>
-            <option value="<?= htmlspecialchars($crypto["Symbol"])?>" selected><?= htmlspecialchars($crypto["Symbol"])?></option>
-            <?php endforeach; ?>
-        </select>
-    </div>
+    <?php if ($cryptos): ?>
+        <div>
+            Compared Crypto:
+            <select id="compared-crypto">
+                <?php foreach ($cryptos as $crypto): ?>
+                    <?php if ($crypto["Symbol"] == "X:ETHUSD"): ?>
+                        <option value="<?= htmlspecialchars($crypto["Symbol"]) ?>" selected><?= htmlspecialchars($crypto["Symbol"]) ?></option>
+                        <?php continue ?>
+                    <?php endif; ?>
+                    <option value="<?= htmlspecialchars($crypto["Symbol"]) ?>"><?= htmlspecialchars($crypto["Symbol"]) ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
     <?php endif; ?>
     <button type="button" id="reset-zoom">Reset Zoom</button>
 
