@@ -4,10 +4,8 @@ async function main() {
     let cryptos = JSON.parse(resp.responseText);
 
     let candleData = [];
-    let lineData = [];
     for (let i = 0; i < cryptos.length; i++) {
         candleData.push({});
-        lineData.push({});
     }
 
     const config = {
@@ -18,12 +16,6 @@ async function main() {
                     label: 'X:BTCUSD',
                     data: candleData,
                 },
-                {
-                    label: 'X:ETHUSD',
-                    type: 'line',
-                    data: lineData,
-                    hidden: true,
-                }
             ]
         },
         options: {
@@ -42,6 +34,16 @@ async function main() {
                             enabled: true,
                         },
                         mode: 'xy',
+                    },
+                    limits: {
+                        y: {
+                            min: 'original',
+                            max: 'original',
+                        },
+                        x: {
+                            min: 'original',
+                            max: 'original',
+                        },
                     },
                 },
             },
@@ -62,28 +64,6 @@ async function main() {
 
     for (let i = 0; i < candleData.length; i++) {
         createCandle(candleData, i)
-    }
-
-    let changeComparedCrypto = async function (target, symbol) {
-        let resp = await getRequest("./handlers/chart_handler.php", symbol);
-        let comparedCrypto = JSON.parse(resp.responseText);
-        console.log(target)
-        console.log(symbol)
-        console.log(comparedCrypto)
-        
-        for (let i = 0; i < comparedCrypto.length; i++) {
-            target[i] = {
-                x: luxon.DateTime.fromMillis(comparedCrypto[i].Timestamp, {
-                    zone: "UTC"
-                }).valueOf(),
-                y: comparedCrypto[i].ClosePrice,
-            };
-        }
-        
-        console.log(target)
-        config.data.datasets[1].hidden = false;
-        config.data.datasets[1].label = symbol;
-        candleChart.update();
     }
 
     const candleChart = new Chart(ctx, config);

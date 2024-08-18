@@ -49,12 +49,12 @@ async function main() {
                     },
                     limits: {
                         y: {
-                          min: -30,
-                          max: 30,
+                            min: 'original',
+                            max: 'original',
                         },
                         x: {
-                            min: 0,
-                            max: btcData.length,
+                            min: 'original',
+                            max: 'original',
                         },
                     },
                 },
