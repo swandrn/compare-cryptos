@@ -24,6 +24,8 @@
         </select>
     </div>
     <?php endif; ?>
+    <button type="button" id="reset-zoom">Reset Zoom</button>
+
     <script src="https://cdn.jsdelivr.net/npm/luxon@^2"></script>
     <script src="./local_cdn/hammer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
