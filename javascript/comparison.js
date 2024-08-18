@@ -91,6 +91,7 @@ async function main() {
         config.data.datasets[1].hidden = false;
         config.data.datasets[1].label = symbol;
         lineChart.update();
+        lineChart.resetZoom();
     }
 
     const lineChart = new Chart(ctx, config);
