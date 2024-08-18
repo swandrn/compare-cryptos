@@ -95,12 +95,14 @@ async function main() {
 
     const lineChart = new Chart(ctx, config);
 
+    changeComparedCrypto(lineData, document.getElementById('compared-crypto').value);
+
     let resetChartZoom = function(){
         lineChart.resetZoom();
     }
 
     document.getElementById('compared-crypto').addEventListener('change', function(){
-        changeComparedCrypto(lineData, document.getElementById('compared-crypto').value)
+        changeComparedCrypto(lineData, document.getElementById('compared-crypto').value);
     })
 
     document.getElementById('reset-zoom').addEventListener('click', resetChartZoom);
