@@ -68,9 +68,11 @@ async function main() {
 
     const candleChart = new Chart(ctx, config);
 
-    document.getElementById('compared-crypto').addEventListener('change', function(){
-        changeComparedCrypto(lineData, document.getElementById('compared-crypto').value)
-    })
+    let resetChartZoom = function(){
+        candleChart.resetZoom();
+    }
+
+    document.getElementById('reset-zoom').addEventListener('click', resetChartZoom);
 }
 
 main();
