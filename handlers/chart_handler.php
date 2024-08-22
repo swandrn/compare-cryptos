@@ -1,6 +1,6 @@
 <?php
-$PROJECT_DIR = $_SERVER['DOCUMENT_ROOT'] . "view_historical_data/";
-require_once $PROJECT_DIR . "utils/database.php";
+$PROJECT_DIR = $_SERVER['DOCUMENT_ROOT'];
+require_once "{$PROJECT_DIR}/utils/database.php";
 $symbol = $_GET["symbol"] ?? null;
 
 if($symbol != null){
