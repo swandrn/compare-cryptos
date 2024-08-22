@@ -1,4 +1,4 @@
-<?php include_once  "../handlers/get_list_of_cryptos.php" ?>
+<?php require_once "../handlers/get_list_of_cryptos.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,28 +6,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/chart.css">
+    <link rel="stylesheet" href="../css/navbar.css">
     <title>Historical Data</title>
 </head>
 
 <body>
-    <div class="wrapper">
-        <canvas id="myChart"></canvas>
-    </div>
-    <?php if ($cryptos): ?>
-        <div>
-            Compared Crypto:
-            <select id="compared-crypto">
-                <?php foreach ($cryptos as $crypto): ?>
-                    <?php if ($crypto["Symbol"] == "X:ETHUSD"): ?>
-                        <option value="<?= htmlspecialchars($crypto["Symbol"]) ?>" selected><?= htmlspecialchars($crypto["Symbol"]) ?></option>
-                        <?php continue ?>
-                    <?php endif; ?>
-                    <option value="<?= htmlspecialchars($crypto["Symbol"]) ?>"><?= htmlspecialchars($crypto["Symbol"]) ?></option>
-                <?php endforeach; ?>
-            </select>
+
+    <head>
+        <nav>
+            <ul class="navbar">
+                <li><a href="./index.php">Home</a></li>
+                <li><a href="./comparison.php" class="active">Compare Cryptos</a></li>
+            </ul>
+        </nav>
+    </head>
+    <main>
+        <div class="wrapper">
+            <canvas id="myChart"></canvas>
         </div>
-    <?php endif; ?>
-    <button type="button" id="reset-zoom">Reset Zoom</button>
+        <?php if ($cryptos): ?>
+            <div>
+                Compared Crypto:
+                <select id="compared-crypto">
+                    <?php foreach ($cryptos as $crypto): ?>
+                        <?php if ($crypto["Symbol"] == "X:ETHUSD"): ?>
+                            <option value="<?= htmlspecialchars($crypto["Symbol"]) ?>" selected><?= htmlspecialchars($crypto["Symbol"]) ?></option>
+                            <?php continue; ?>
+                        <?php endif; ?>
+                        <option value="<?= htmlspecialchars($crypto["Symbol"]) ?>"><?= htmlspecialchars($crypto["Symbol"]) ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        <?php endif; ?>
+        <button type="button" id="reset-zoom">Reset Zoom</button>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/luxon@^2"></script>
     <script src="../local_cdn/hammer.min.js"></script>

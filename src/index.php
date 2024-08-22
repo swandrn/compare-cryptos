@@ -5,15 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/chart.css">
+    <link rel="stylesheet" href="../css/navbar.css">
     <title>Historical Data</title>
 </head>
 
 <body>
-    <div class="wrapper">
-        <canvas id="myChart"></canvas>
-    </div>
-    <button type="button" id="reset-zoom">Reset Zoom</button>
-    
+
+    <head>
+        <nav>
+            <ul class="navbar">
+                <li><a href="./index.php" class="active">Home</a></li>
+                <li><a href="./comparison.php">Compare Cryptos</a></li>
+            </ul>
+        </nav>
+    </head>
+    <main>
+        <div class="wrapper">
+            <canvas id="myChart"></canvas>
+        </div>
+        <button type="button" id="reset-zoom">Reset Zoom</button>
+    </main>
+
     <script src="https://cdn.jsdelivr.net/npm/luxon@^2"></script>
     <script src="../local_cdn/hammer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
