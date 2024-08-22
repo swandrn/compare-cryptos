@@ -1,6 +1,6 @@
 const ctx = document.getElementById('myChart').getContext('2d');
 async function main() {
-    let resp = await getRequest("./handlers/chart_handler.php", "X:BTCUSD");
+    let resp = await getRequest("../handlers/chart_handler.php", "X:BTCUSD");
     let cryptos = JSON.parse(resp.responseText);
 
     let candleData = [];
