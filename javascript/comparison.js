@@ -78,7 +78,7 @@ async function main() {
     }
 
     let changeComparedCrypto = async function (target, symbol) {
-        let resp = await getRequest("./handlers/chart_handler.php", symbol);
+        let resp = await getRequest("../handlers/chart_handler.php", symbol);
         let comparedCrypto = JSON.parse(resp.responseText);
         
         for (let i = 0; i < comparedCrypto.length; i++) {
