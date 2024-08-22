@@ -1,12 +1,10 @@
 <?php
-$PROJECT_DIR = $_SERVER['DOCUMENT_ROOT'] . "view_historical_data/";
-$env = parse_ini_file($PROJECT_DIR . ".env");
 
 function open_connection()
 {
     try {
         global $env;
-        $pdo = new PDO("mysql:host={$env["DB_ADDR"]};dbname={$env["DB_NAME"]}", $env["DB_USER"], $env["DB_PWD"]);
+        $pdo = new PDO("mysql:host=" . getenv("DB_ADDR") . ";dbname=" . getenv("DB_NAME"), getenv("DB_USER"));
         $pdo->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, false);
 
         return $pdo;
