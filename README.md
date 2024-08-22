@@ -15,6 +15,7 @@ Create a .env file placed at the root of the project directory with:
 
 The only requirement is Docker
 
+In the root of the project directory, run:
 ```bash
-docker-compose compose.yaml
+docker-compose up compose.yaml
 ```
