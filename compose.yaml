@@ -1,0 +1,23 @@
+services:
+  server:
+    build:
+      context: .
+    env_file:
+      - ./.env
+    ports:
+      - 9000:80
+    links:
+     - historical-data-db
+  
+  historical-data-db:
+    image: mysql:latest
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+    ports:
+      - 6033:3306
+    volumes:
+      - historical-data-volume:/var/lib/mysql
+      - ./db_scripts:/docker-entrypoint-initdb.d
+
+volumes:
+  historical-data-volume:
